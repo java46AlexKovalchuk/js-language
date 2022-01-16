@@ -1,33 +1,31 @@
-console.log("Hello World");
-//output for var: 3 3 3 
-for (let i = 0; i < 3; i++){
-   setTimeout (function() {
-        console.log(i)});
-    }
+/***Homework 11***/
 
-   // for (let i = 0; i < 3; i++);{
+const codingString = "!@#$"; //entering coding string and encoded number
+let num = 55;
+
+function encode (num, codingString) {
+    let res = "";
+    const base = codingString.length;
     
-     //   console.log(i);
-    //}   
-    //console.log(i);
-    const fun = function(a, b) {
-        return a + b;
+    // loop for check repeaded symbols in the code string
+    for(let i = 0; i < codingString.length - 1; i++){
+        if (codingString.indexOf(codingString[i]) != codingString.lastIndexOf(codingString[i])){
+           console.log(`WARNING: code string contains repeated symbols like ${codingString[i]}`);
+        }
     }
-    let a = 5;
-    //console.log(a ** 2);
-    //console.log(fun(10,20));
-   // console.log(fun ** 2);
-   console.log("12" + 12, '"12" + 12');
-   console.log("12" - 12);
-   console.log("ab" - 12);
-   //sometimes there is a need to explicit conversion from string to the number
-   //"+" unary is the simplest way for the explicit conversion of a string to numb
-    console.log('+"12" + 12 = ${+"12" + 12}');
-    //home work#10
-    //1.using only two letters "a", "s" print out word "ananas" case insensitive
-    //2.write function calculate that can perform any arithmetic operations on two numbers
-    //3.write any exapmle for running the following expression fun(5)(10, 3)
-    console.log(+"12" + 12);
-    console.log('12 + 12'); 
-    console.log(`${+"12" + 12}`);
+    // get number in the system that specified by base
+    do {
+    const digit = Math.trunc(num % base);  
+    const symb = getSymbol(digit, codingString);
+    res = symb + res;
+    num = Math.trunc(num / base);
+    } while(num >= 1);
+    return res;
+}
+    //get the corresponding symbol from coding string
+function getSymbol(digit, codingString){
+return codingString[digit];
+}
+
+console.log(encode(num, codingString));
 
