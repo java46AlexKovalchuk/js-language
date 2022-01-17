@@ -1,33 +1,69 @@
-console.log("Hello World");
-//output for var: 3 3 3 
-for (let i = 0; i < 3; i++){
-   setTimeout (function() {
-        console.log(i)});
-    }
+/************Arrays******/
+const ar = [2, 100, 9, 80];
+// ar.sort(function(a, b) {
+//         return a - b;
+// });
+// ar.sort((a, b) => a - b)
+// console.log(`ar is ${ar.toString()}`); 
+/****HW-12 ****
+const arHw = [13, 28, 4, 15, 25, -10, 40, 17, 27]
+expected [-10, 4, 28, 40, 27, 25, 17, 15, 13]
+write a comparator (a comparator returns <0 if first less then srcond,
+        >0 if first greated then second, ==0 if first equal second)
+/********************************** */
+// adding element/s at end of an array
+ar[ar.length] = 200;
+console.log(ar);
+ar.push(300, 25);
+console.log(ar);
+const ar1 = [-8, 30, -57];
+//ar.push(ar1); there will be added array but not separated numbers
+//if you want to add separated a numbers, you should apply a spread operator:
+ar.push(...ar1);
+console.log(ar);
+// for adding elements at beginning of array there is method "unshift"
+//everything has been said about "push" will work for "unshift", only adds elements at beginning
+const ar2 = [27, 35];
+ar.unshift(...ar2);
+console.log(ar); 
+//abc123drtyugr
+//method "splice" for inserting or replacing any elements in any place
+//first argument - index for inserting or replacing
+//second argument - number of the deleted elements (if 0 then splice will be aply only for insert)
+//third argument - designates sequence of being inserting elements like push/unshift
+ar.splice(2,0,1,2);
+console.log(ar);
+//removing (deleting)
+let el = ar.pop(); //removes the last element end returns it
+//el = -57; -57 wijj be remove from the array ar
+el = ar.shift(); //removes the first element and returns it
+//el = 27; 27 will be removed from the array ar
+console.log(el, ar);
+ar.splice(3, 5); //remove 5 elements beginning from the one at index
+console.log(ar);
+//includes, indexOf
+//two dimensional arrays
+const matrix1 = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [3, 4, 5]];
+const matrix2 = [[10, 20], [50, -5], [34, 28]];
+function displayMatrix(matrix) {
+        for (let i = 0; i < matrix.length; i++){
+                let row = '';
+                for(let j = 0; j < matrix[i].length; j++){
+                     row = row + matrix[i][j] + '  ';
+                }
+                console.log(row);
+        }        
+}
+//displayMatrix(matrix1);
+displayMatrix(matrix2);
 
-   // for (let i = 0; i < 3; i++);{
-    
-     //   console.log(i);
-    //}   
-    //console.log(i);
-    const fun = function(a, b) {
-        return a + b;
-    }
-    let a = 5;
-    //console.log(a ** 2);
-    //console.log(fun(10,20));
-   // console.log(fun ** 2);
-   console.log("12" + 12, '"12" + 12');
-   console.log("12" - 12);
-   console.log("ab" - 12);
-   //sometimes there is a need to explicit conversion from string to the number
-   //"+" unary is the simplest way for the explicit conversion of a string to numb
-    console.log('+"12" + 12 = ${+"12" + 12}');
-    //home work#10
-    //1.using only two letters "a", "s" print out word "ananas" case insensitive
-    //2.write function calculate that can perform any arithmetic operations on two numbers
-    //3.write any exapmle for running the following expression fun(5)(10, 3)
-    console.log(+"12" + 12);
-    console.log('12 + 12'); 
-    console.log(`${+"12" + 12}`);
+//HW 12  
+//write function
+function matrixTransp(matrix){
+        //TODO
+        //return matrix with columns that are rows of the sourse matrix and
+        //the rows that are columns of the sourse matrix
+        //example: sourse matrix [[1,2], [3,4], [5,6]]
+        //result matrix: [[1,3,5], [2,4,6]]
+}
 
