@@ -27,3 +27,16 @@ console.log (arr1);
 
 //**********HW-13 task2 *****/
 
+function myMap(arr, callback) {
+    let newAr = []; 
+      myForEach(arr, function (a, i, arr) {newAr.push(callback(a, i, arr))});
+   
+          return newAr;
+    } 
+
+    //test
+    const ar5 = [1, 3, 5, 7, 9];
+    //let ar7 = ;
+    console.log(myMap(ar5, n => n *= 2));  
+    
+    
