@@ -53,7 +53,7 @@
     const max = ar20.reduce((max, cur) => cur > max ? cur : max, ar20[0]);
 console.log(max);
 //reduce with no second argument
-const res = ar20.reduce((res, cur) => res + cur);
+//const res = ar20.reduce((res, cur) => res + cur);
 
 
 //TODO write myReduce(array, callback, initialResult) based on myForEach
@@ -61,4 +61,62 @@ const res = ar20.reduce((res, cur) => res + cur);
     //if the user call does not contain initialResult, then the first element of the array 
     //will be considered as initial result (inthis case iteratinf begin from the second element of the array)
 /****************************** */
+
+//HW-14
+// task.3
+function getPersonsCity(persons, city) {
+    return persons.filter(n => n.address.city == city);
+}
+
+function personsNoCity (persons, city) {
+    const perNoCity =  persons.filter(n => n.address.city != city);
+    const personsCity = persons.filter(n => n.address.city == city);
+    const res = perNoCity.concat(personsCity);
+    return res;
+}
+//const personsNoCity = persons.filter(n => n.address.city != city);
+// task.4
+// function movePersonsNoCityAtBeginnning(persons, city){
+//     const personsNoCity = persons.filter(n => n.address != city);
+//     const personsCity = persons.filter(n => n.address.city == city);
+//     const personsNoCityFirst = personsNoCity.concat(personsCity);
+//     return personsNoCityFirst;
     
+//     //return notInCity = persons.filter(n => n.address.city !== city);
+// }
+
+// function getPersNotCityFirst(persons, city){
+
+//     return getPersNotCity(persons, city).concat(getPersonsCity(persons, city));
+// }
+
+//test
+// input: 
+
+const persons = [
+    createPerson(123, "Vasya", createAddress("Rehovot", "Parshani")),
+    createPerson(124, "Olya", createAddress("Rehovot", "Pr. Plaut")),
+    createPerson(125, "Tolya", createAddress("Tel-Aviv", "Dizengoff")),
+    createPerson(126, "Sara", createAddress('Lod', 'Sokolov'))
+];
+
+
+//output:
+console.log(personsNoCity(persons, 'Rehovot'));
+// const residentsRehovot = getPersonsCity(persons, 'Rehovot');
+// const residentsNotrehovot = movePersonsNoCityAtBeginnning(persons, 'Rehovot');
+// console.log(residentsRehovot);
+//console.log(residentsNotrehovot);
+
+//console.log(persons);
+
+//factory functions:
+function createAddress(city, street) {
+    return {city, street};
+}
+function createPerson(id, name, address) {
+    return {id, name, address};
+}
+
+// console.log(notResRehovot.concat(residentsRehovot));
+// console.log(getPersNotCityFirst(persons, 'Rehovot'));
