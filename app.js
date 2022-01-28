@@ -1,122 +1,88 @@
-/**********HW-13 */ 
-//1. Method myForEach:
-
-// const myForEach = function(ar, callback){
-//     for(let i = 0; i < ar.length; i++){
-//         callback(ar[i], i, ar);
-//     }
-// }
-
-// // test
-//   let arr1 = [1, 2, 3, 4, 5];
-//   let str1 = '';
-
-// //create string with delimiter * :
-// myForEach(arr1, n => str1 += n + '*'); 
-// console.log(str1);
-
-// //calculate the sum of elements of array arr1:
-// let sum = 0;
-// myForEach(arr1, n => sum += n);
-// console.log(sum);
-
-// //multiply by 2 each element of array arr1 and rewrite the array:
-// myForEach(arr1, (n, i, arr1) => arr1[i] = n * 2);
-// console.log (arr1);
+const person1 = { id: 123, name: 'Moshe', address: { city: 'Lod', street: 'Sokolov' } };
+const person2 = { id: 123, name: 'Moshe', address: { city: 'Lod', street: 'Sokolov' } };
+const person3 = person1;
 
 
-// //**********HW-13 task2 *****/
-
-// function myMap(arr, callback) {
-//     let newAr = []; 
-//       myForEach(arr, function (a, i, arr) {newAr.push(callback(a, i, arr))});
-   
-//           return newAr;
-//     } 
-
-//     //test
-//     const ar5 = [1, 3, 5, 7, 9];
-//     //let ar7 = ;
-//     console.log(myMap(ar5, n => n *= 2));  
-
-
-    /********* filter */
-    const ar20 = [13, 17, 20, 23, 2, 40];
-    const arEvenOdd = ar20.filter((n, _i, a) => a.length % 2 == 0 ? n % 2 == 0 : n % 2 == 1);
-    console.log(arEvenOdd);
-    /*************HW-14 task1 */
-    //TODO write myFilter(array, callback) based on myForEach
-    //callback - function with 3 possible parametres - current element, index, reference to array
-    /************************* */
-    const res = ar20.reduce((res, cur) => res + cur, 0);
-    console.log(res);
-    const max = ar20.reduce((max, cur) => cur > max ? cur : max, ar20[0]);
-console.log(max);
-//reduce with no second argument
-//const res = ar20.reduce((res, cur) => res + cur);
-
-
-//TODO write myReduce(array, callback, initialResult) based on myForEach
-    //callback - function with 4 parametres: accumulate result , current element, index, reference to array
-    //if the user call does not contain initialResult, then the first element of the array 
-    //will be considered as initial result (inthis case iteratinf begin from the second element of the array)
-/****************************** */
-
-//HW-14
-// task.3
-function getPersonsCity(persons, city) {
-    return persons.filter(n => n.address.city == city);
-}
-
-function personsNoCity (persons, city) {
-    const perNoCity =  persons.filter(n => n.address.city != city);
-    const personsCity = persons.filter(n => n.address.city == city);
-    const res = perNoCity.concat(personsCity);
-    return res;
-}
-//const personsNoCity = persons.filter(n => n.address.city != city);
-// task.4
-// function movePersonsNoCityAtBeginnning(persons, city){
-//     const personsNoCity = persons.filter(n => n.address != city);
-//     const personsCity = persons.filter(n => n.address.city == city);
-//     const personsNoCityFirst = personsNoCity.concat(personsCity);
-//     return personsNoCityFirst;
-    
-//     //return notInCity = persons.filter(n => n.address.city !== city);
-// }
-
-// function getPersNotCityFirst(persons, city){
-
-//     return getPersNotCity(persons, city).concat(getPersonsCity(persons, city));
-// }
-
-//test
-// input: 
-
-const persons = [
-    createPerson(123, "Vasya", createAddress("Rehovot", "Parshani")),
-    createPerson(124, "Olya", createAddress("Rehovot", "Pr. Plaut")),
-    createPerson(125, "Tolya", createAddress("Tel-Aviv", "Dizengoff")),
-    createPerson(126, "Sara", createAddress('Lod', 'Sokolov'))
-];
-
-
-//output:
-console.log(personsNoCity(persons, 'Rehovot'));
-// const residentsRehovot = getPersonsCity(persons, 'Rehovot');
-// const residentsNotrehovot = movePersonsNoCityAtBeginnning(persons, 'Rehovot');
-// console.log(residentsRehovot);
-//console.log(residentsNotrehovot);
-
-//console.log(persons);
-
-//factory functions:
+console.log(`"123" == 123 is ${"123" == 123}`);
+console.log(`"123" === 123 is ${"123" === 123}`);
+console.log(`person1 === person3 is ${person1 === person3}`)
+console.log(`person1 === person2 is ${person1 === person2}`)
+console.log(`JSON.stringify(person1) === JSON.stringify(person2) is ${JSON.stringify(person1) ===
+        JSON.stringify(person2)}`);
+console.log(JSON.stringify(person1));
+console.log(person1.toString());
+console.log(`name of person1 is ${person1.name}`)
+console.log(`person1 lives in city ${person1.address.city}`);
+Object.keys(person1).forEach(k => console.log(k)) //array of the object keys
+Object.values(person1).forEach(v => console.log(v)); //array of the object values
+Object.entries(person1).forEach(e => console.log(e)); //array of arrays - [key, value]
+console.log(Object.entries(person1));
 function createAddress(city, street) {
-    return {city, street};
+        //{city: city, street: street} <=> {city, street}
+        return {city, street}
 }
 function createPerson(id, name, address) {
-    return {id, name, address};
+        return {id, name, address};
+}
+const persons = [
+        createPerson(123, "Vasya", createAddress("Rehovot","Parshani")),
+        createPerson(124, "Olya", createAddress("Rehovot","Pr. Plaut")),
+        createPerson(125, "Tolya", createAddress("Tel-Aviv","Dizengoff")),
+        createPerson(126, "Sara", createAddress('Lod', 'Sokolov'))
+]
+console.log(persons);
+/*********cw-15*/
+//input: ["lmn", "d", "d", "lmn", "a", "lmn", "a", "bc"]
+//output: lmn -> 3
+//        a -> 2
+//        d -> 2
+//        bc -> 1
+function displayOccurences(array){
+    //creating object with key - unique element of array (string as a element of array)
+    //           value - occurences count  
+    //difference between obj = {a: 123, d: "abc"}; const a = "d" ; obj.a === 123
+    //  and obj[a] === "abc"
+    // obj.c = 10 ->   {a: 123, d: "abc", c: 10} 
+    const res = {};
+    for(let i = 0; i < array.length; i++) {
+        if(res[array[i]] === undefined){ 
+            //string as content of array[i] occures first time
+            res[array[i]] = 1;
+        } else{
+            res[array[i]] = res[array[i]] + 1;
+        }
+    } 
+   //console.log (res)   -> intermediate debug log
+   Object.entries(res).sort((e1, e2) => {
+    const res = e2[1] - e1[1];
+    return res === 0 ? e1[0].localeCompare(e2[0]) : res;
+}).forEach(e => console.log(`${e[0]} -> ${e[1]}`))
 }
 
-// console.log(notResRehovot.concat(residentsRehovot));
-// console.log(getPersNotCityFirst(persons, 'Rehovot'));
+const ar = ["lmn", "d", "d", "lmn", "a", "lmn", "a", "bc"];
+displayOccurences(ar);
+/* 
+/*************hw-15 task1 refactoring of displayOccurences  lines 92-99 
+ * should be a separated function**
+ * that separated function should apply standard methods like reduce*******
+ * 
+ *                  task 2 
+ *  write usefull function countBy(array, callbacFun) that return object with keys
+ * as grouping criteria and values as the occurrence counts
+ * 
+ * where array - any array, callbackFun - function returning grouping criteria
+ * examples:
+ * // const arr = [6.4, 7.3, 6.5, 6.9];
+ * const statistics = countBy(arr, element =>Math.floor(element))
+ * result: statistics -> {"6": 3, "7": 1}
+ * 
+ * const arr = ['abcd', 'lmnr', 'ab', 'dddd']
+ * const statistics = countBy(arr, element => element.length)
+ * result: statistics -> {"4": 3, "2": 1}
+ * 
+ * const arr = [{age: 25, id: 123, name: 'Vasya'}, {age: 50, id: 123, name: 'Vasya'},
+ * age: 25, id: 123, name: 'Vasya'}, {age: 70, id: 123, name: 'Vasya'} ]
+ * const statistics = countBy(arr, element -> element.age)
+ * result: {"25": 2, "50": 1, "70": 1}
+ */
+ 
