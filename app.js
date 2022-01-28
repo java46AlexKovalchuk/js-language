@@ -1,88 +1,35 @@
-const person1 = { id: 123, name: 'Moshe', address: { city: 'Lod', street: 'Sokolov' } };
-const person2 = { id: 123, name: 'Moshe', address: { city: 'Lod', street: 'Sokolov' } };
-const person3 = person1;
 
+ const euros = [29.76, 41.85, 46.5];
+// const doubled = euros.reduce((total, amount) => {total.push(amount * 2)
+//     return total;},[])
+// console.log(doubled);
+const above30 = euros.reduce((total, amount) => {amount > 30 ? total.push(amount) : undefined
+ return total }, [])
+console.log(above30);
 
-console.log(`"123" == 123 is ${"123" == 123}`);
-console.log(`"123" === 123 is ${"123" === 123}`);
-console.log(`person1 === person3 is ${person1 === person3}`)
-console.log(`person1 === person2 is ${person1 === person2}`)
-console.log(`JSON.stringify(person1) === JSON.stringify(person2) is ${JSON.stringify(person1) ===
-        JSON.stringify(person2)}`);
-console.log(JSON.stringify(person1));
-console.log(person1.toString());
-console.log(`name of person1 is ${person1.name}`)
-console.log(`person1 lives in city ${person1.address.city}`);
-Object.keys(person1).forEach(k => console.log(k)) //array of the object keys
-Object.values(person1).forEach(v => console.log(v)); //array of the object values
-Object.entries(person1).forEach(e => console.log(e)); //array of arrays - [key, value]
-console.log(Object.entries(person1));
-function createAddress(city, street) {
-        //{city: city, street: street} <=> {city, street}
-        return {city, street}
-}
-function createPerson(id, name, address) {
-        return {id, name, address};
-}
-const persons = [
-        createPerson(123, "Vasya", createAddress("Rehovot","Parshani")),
-        createPerson(124, "Olya", createAddress("Rehovot","Pr. Plaut")),
-        createPerson(125, "Tolya", createAddress("Tel-Aviv","Dizengoff")),
-        createPerson(126, "Sara", createAddress('Lod', 'Sokolov'))
-]
-console.log(persons);
-/*********cw-15*/
-//input: ["lmn", "d", "d", "lmn", "a", "lmn", "a", "bc"]
-//output: lmn -> 3
-//        a -> 2
-//        d -> 2
-//        bc -> 1
-function displayOccurences(array){
-    //creating object with key - unique element of array (string as a element of array)
-    //           value - occurences count  
-    //difference between obj = {a: 123, d: "abc"}; const a = "d" ; obj.a === 123
-    //  and obj[a] === "abc"
-    // obj.c = 10 ->   {a: 123, d: "abc", c: 10} 
-    const res = {};
-    for(let i = 0; i < array.length; i++) {
-        if(res[array[i]] === undefined){ 
-            //string as content of array[i] occures first time
-            res[array[i]] = 1;
-        } else{
-            res[array[i]] = res[array[i]] + 1;
-        }
-    } 
-   //console.log (res)   -> intermediate debug log
-   Object.entries(res).sort((e1, e2) => {
-    const res = e2[1] - e1[1];
-    return res === 0 ? e1[0].localeCompare(e2[0]) : res;
-}).forEach(e => console.log(`${e[0]} -> ${e[1]}`))
-}
+const fruitBasket = ['banana', 'cherry', 'orange', 'apple', 'cherry', 'orange', 'apple', 'banana', 'cherry', 'orange', 'fig' ];
+//  //const count = fruitBasket.reduce((tally, fruit) => { !tally[fruit] ? tally[fruit] = 1 : 
+//  //   tally[fruit] += 1 
+//  //    return tally} , {})
+const count = fruitBasket.reduce((tally, fruit) => {
+    if(!tally[fruit]) {
+        tally[fruit] = 1;
+    }
+    else {
+        tally[fruit] += 1;
+    }
+    //tally[fruit] = (tally[fruit] || 0) + 1 ;
+  return tally;
+}, {} );
+console.log(count);
 
-const ar = ["lmn", "d", "d", "lmn", "a", "lmn", "a", "bc"];
-displayOccurences(ar);
-/* 
-/*************hw-15 task1 refactoring of displayOccurences  lines 92-99 
- * should be a separated function**
- * that separated function should apply standard methods like reduce*******
- * 
- *                  task 2 
- *  write usefull function countBy(array, callbacFun) that return object with keys
- * as grouping criteria and values as the occurrence counts
- * 
- * where array - any array, callbackFun - function returning grouping criteria
- * examples:
- * // const arr = [6.4, 7.3, 6.5, 6.9];
- * const statistics = countBy(arr, element =>Math.floor(element))
- * result: statistics -> {"6": 3, "7": 1}
- * 
- * const arr = ['abcd', 'lmnr', 'ab', 'dddd']
- * const statistics = countBy(arr, element => element.length)
- * result: statistics -> {"4": 3, "2": 1}
- * 
- * const arr = [{age: 25, id: 123, name: 'Vasya'}, {age: 50, id: 123, name: 'Vasya'},
- * age: 25, id: 123, name: 'Vasya'}, {age: 70, id: 123, name: 'Vasya'} ]
- * const statistics = countBy(arr, element -> element.age)
- * result: {"25": 2, "50": 1, "70": 1}
- */
- 
+const data = [
+    {a: 'happy', b: 'robin', c: ['blue','green']}, 
+    {a: 'tired', b: 'panther', c: ['green','black','orange','blue']}, 
+    {a: 'sad', b: 'goldfish', c: ['green','red']}
+  ];
+
+const colors = data.reduce((total, amount) => {amount.c.forEach(color => total.push(color));
+return total
+}, []);
+console.log(colors);
