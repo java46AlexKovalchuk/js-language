@@ -29,7 +29,18 @@ const data = [
     {a: 'sad', b: 'goldfish', c: ['green','red']}
   ];
 
-const colors = data.reduce((total, amount) => {amount.c.forEach(color => total.push(color));
-return total
+const colors = data.reduce((total, el) => {el.c.forEach(color => {total.push(color)}); 
+return total}, []); 
+  console.log(colors);
+  
+const uniqColors = data.reduce((total, el) => {el.c.forEach(color => {
+  if (total.indexOf(color, ) === -1){
+    total.push(color);
+  }
+  })
+  return total;
 }, []);
-console.log(colors);
+console.log(uniqColors);
+
+
+
