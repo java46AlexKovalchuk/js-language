@@ -131,4 +131,26 @@ console.log(statArNames);
 //  {age: 25, id: 123, name: 'Vasya'}, {age: 70, id: 123, name: 'Vasya'} ];
 
 //  const testAr1 = ['qwe', 'qrt', 'qazx', 'as', 'fg', 'jkhg', 'f'];
- 
+
+//test callback
+
+function each (ar, callback){
+  let result = [];
+  for(let elem of ar) {
+  result.push(callback(elem));    //call callback
+  }
+  return result;
+}
+
+const ar1 = ['qwe', 'ert', 'ghj'];  
+const callback = (num => num.split('').reverse().join(''));
+const str2 = each(ar1, callback);
+console.log(str2);
+
+// let arRes = each(ar1, callback);
+// // let arRes = each(ar1, function (num){
+// //   return num ** 2;
+// // });
+
+
+
