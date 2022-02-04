@@ -99,3 +99,16 @@ const person2 = new Employee(124, "Sara", 5000);
 //     //computeChildrenKindergarten(persons ....)
 //   }
 // }
+const ar555 = ['qw', 'er', 'qw', 'rt', 'qw', 'er', 'qw']
+
+
+//const count = fruitBasket.reduce((tally, fruit) => {
+      //     if(!tally[fruit]) {
+      //         tally[fruit] = 1;
+      //     }
+      //     else {
+      //         tally[fruit] += 1;
+      //     }
+      //     //tally[fruit] = (tally[fruit] || 0) + 1 ;
+      //   return tally;
+      // }, {} );
