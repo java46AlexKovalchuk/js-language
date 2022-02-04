@@ -1,39 +1,36 @@
-class Person {
-        #id;
-        #name;
-        constructor(id, name) {
-          this.#id = id;
-          this.#name = name;
-        }
-        getId(){
-              return this.#id;
-        }
-        getName(){
-              return this.#name;
-        }
-        toString(){
-              return `id: ${this.#id}; name: ${this.#name} `
-        }
+
+ class Person{
+       #id = id;
+       #name = name;
+       constructor(id, name){
+             this.#id = id;
+             this.#name = name
+       }
+       getId(){
+             return this.#id;
+       }
+       getName(){
+             return this.#name;
+       }
 }
+
 const person = new Person(123, 'Moshe');
-console.log(`person is ${person}`);
+console.log(person);
 
-
-
-class Employee extends Person {
-        #salary;
-        constructor(id, name, salary){
-            super(id, name);   //call the constructor of the class Person
-            this.#salary = salary;
-        }
-        computeSalary(){
-              return this.#salary;
-        }
-        toString(){
-              return super.toString() + ` salary: ${this.computeSalary()}`
-        }
-}
-const person2 = new Employee(124, "Sara", 5000);
+// class Employee extends Person {
+//         #salary;
+//         constructor(id, name, salary){
+//             super(id, name);   //call the constructor of the class Person
+//             this.#salary = salary;
+//         }
+//         computeSalary(){
+//               return this.#salary;
+//         }
+//         toString(){
+//               return super.toString() + ` salary: ${this.computeSalary()}`
+//         }
+// }
+// const person2 = new Employee(124, "Sara", 5000);
 
 // console.log(`person2 is ${person2}`);
 
