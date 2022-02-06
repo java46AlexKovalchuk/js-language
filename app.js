@@ -2,10 +2,21 @@
 //HW-17
 //1.
 function countOfPersonType(persons, type){
-      const listTypes = persons.map(n=> n.constructor.name);
-      const qntTypes = listTypes.filter(n => n === type);
-      return qntTypes.length;
+      return persons.filter(n => n.constructor.name === type).length;
 }  
+
+//2. 
+function computeSalaryBudget(persons){
+return persons.reduce((sum, el) => el.constructor.name !== 'Child' && el.computeSalary() ? sum += el.computeSalary() : 0);
+}
+
+//3.
+function countChildrenKindergarten(persons, kindergarten) {
+return persons.reduce((res, el) => {el.constructor.name === 'Child' && 
+                                    el.getKindergarten() === kindergarten
+                                    && res++; return res}, 0);
+}
+
 
 //create object (from classwork)
 class Person {
@@ -75,8 +86,11 @@ const persons = [
   new WageEmployee(104, 'Tolya', 1000, 10, 100)
 ]
 
+
 //test
 const numType = countOfPersonType(persons, 'Child');  
 console.log(`Object "persons" contains ${numType} person of given type`);
+console.log(`Common salaries budget: ${computeSalaryBudget(persons)}`);
+console.log(countChildrenKindergarten(persons, 'Shalom'));
 
 
