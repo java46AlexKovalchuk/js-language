@@ -78,11 +78,29 @@ const persons = [
   new Employee(103, 'Vasya', 1000),
   new WageEmployee(104, 'Tolya', 1000, 10, 100)
 ]
-
+//HW-17
 const getListTypes = persons.map(n => n.constructor.name);
-console.log(getListTypes);
+//console.log(getListTypes);
+const qntTypes = getListTypes.filter(n => n == 'Child');
+//console.log(qntTypes);
+const numberTheType = qntTypes.length;
+console.log(numberTheType);
 
-console.log(`${persons}`);
+function countOfPersonType(persons, type){
+    const listTypes = persons.map(n=> n.constructor.name);
+    const qntTypes = listTypes.filter(n => n === type);
+    return qntTypes.length;
+}  
+const numType = countOfPersonType(persons, 'Employee');
+console.log(numType);
+      
+      //   //return count of persons of the given type
+      //   //Example:
+      //   //countOfPersonType(persons, 'WageEmployee')    --->  1
+      // }
+
+
+//console.log(`${persons}`);
 
 
 
