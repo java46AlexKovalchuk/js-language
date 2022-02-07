@@ -62,6 +62,7 @@ class WageEmployee extends Employee {
             this.#wage = wage;
       }
       computeSalary(){
+            console.log('logging of parameter this' , this);
             return super.computeSalary() + this.#hours * this.#wage;
       }
 }
@@ -78,6 +79,12 @@ const persons = [
   new Employee(103, 'Vasya', 1000),
   new WageEmployee(104, 'Tolya', 1000, 10, 100)
 ]
+
+function computeSalaryBudget(persons){
+      const allEmployees = persons.filter(p => !!p.computeSalary);
+      const salaryValues = allEmployees.map(p => p.computeSalary());
+      return salaryValues.reduce((res, cur) => res + cur);
+}
 //HW-17
 const getListTypes = persons.map(n => n.constructor.name);
 //console.log(getListTypes);
@@ -129,3 +136,11 @@ console.log(numType);
 //     //computeChildrenKindergarten(persons ....)
 //   }
 // }
+
+function testOutput(fun, expected){
+   console.log(`function ${fun.name} ; expected result: ${expected} ; actual result: ${fun()} `)   
+}
+
+//testOutput(person4.computeSalary.bind(person4), 2000);
+//testOutput(computeSalaryBudget.bind(undefined, persons), 3000)
+testOutput(countOfPersonType.bind(undefined, persons, 'Child'), 3);
