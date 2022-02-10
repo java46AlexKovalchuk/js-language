@@ -37,3 +37,22 @@ funDisplayArguments();
 //mixed - part of arguments are bount by the method mybind and other part of arguments are past at function code
 const funDisplayMixed = displayPointInSpace.mybind(point, 10);
 funDisplayMixed(20)
+
+
+const t = 4;
+console.log(t);
+
+const bird = {
+      size: "small"
+    };
+    
+    const mouse = {
+      name: "Mickey",
+      small: true
+    };
+    
+//     A: mouse.bird.size is not valid
+//     B: mouse[bird.size] is not valid
+//     C: mouse[bird["size"]] is not valid
+//     D: All of them are valid
+    console.log (mouse[bird["size"]]);
