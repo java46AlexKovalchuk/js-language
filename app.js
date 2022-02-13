@@ -95,7 +95,7 @@ function rndFromInterval(first, last){
 console.log(rndFromInterval(5, 0));
 //console.log(min);
 
-/
+
 
 // function concatinate(prefix){
 //       return function(str){
