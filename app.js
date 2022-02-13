@@ -2,7 +2,7 @@
 //part 1.
 
 function getRandomNumber(min, max){
-   let [elMin, elMax] = [min, max].sort((a, b) => a - b); //destructuring array, getting variables min & max, sorting 
+   let [elMin, elMax] = [min, max].sort((a, b) => a - b); //destructuring array, getting variables elMmin & elMax, sorting 
    return Math.round(elMin - 0.5 + Math.random() * (elMax - elMin + 1)); //using randomiser on given interval (including)
 }
  
